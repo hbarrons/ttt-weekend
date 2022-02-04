@@ -4,7 +4,6 @@
 
 // Display empty board upon loading page
 // Display rules to game
-// Allow player to pick between X and O
 // X player goes first
 // Player can click on box to make selection
     // Once selected, a square value cannot change/be selected again

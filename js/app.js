@@ -1,12 +1,6 @@
 /*-------------------------------- Constants --------------------------------*/
-const players = {
-  '1': {
-    score: 0
-  },
-  '-1': {
-    score: 0,
-  }
-}
+const player1 = 1
+const player2 = -1
 
 const winningCombos = [
   win1 = [sq0, sq1, sq2],
@@ -22,31 +16,33 @@ const winningCombos = [
 
 /*---------------------------- Variables (state) ----------------------------*/
 let gameBoard
-let playerTurn = 1
+let playerTurn
 let isWinner
 
 /*------------------------ Cached Element References ------------------------*/
-const allSquares = document.querySelectorAll('.square')
+const allSquares = Array.from(document.querySelectorAll('.square'))
 const gameMessage = document.getElementById('message')
 const resetBtn = document.querySelector('#reset-button')
 
-
+console.log(allSquares)
 
 /*----------------------------- Event Listeners -----------------------------*/
 //forEach that 
 // allSquares.forEach(square => 
 //   square.addEventListener('click', makeChoice))
 
-  document.querySelector('.board').addEventListener('click',makeChoice)
+document.querySelector('.board').addEventListener('click',makeChoice)
+
+
 
 /*-------------------------------- Functions --------------------------------*/
 
 init()
 function init (){
-  gameBoard = [1, null, -1, null, null, null, null, null, null]
+  gameBoard = [null, null, null, null, null, null, null, null, null]
   playerTurn = 1
   isWinner = null
-  gameMessage.textContent = "Player X is first, make your selection"
+  gameMessage.textContent = "Player X is first. Make your selection!"
   render()
 }
 
@@ -55,13 +51,18 @@ function render (){
     pushLetter = document.getElementById(`sq${idx}`)
     if (square === 1) {
       pushLetter.innerHTML = 'X'
+      gameMessage.textContent ='Player O make your selection'
     } else if (square === -1) {
       pushLetter.innerHTML = 'O'
+      gameMessage.textContent ='Player X make your selection'
     } else {
       square = null
     }   
-    console.log(square)
   })
+}
+
+function renderTurn (){
+
 }
 
 function makeChoice (event){
