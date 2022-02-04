@@ -1,6 +1,6 @@
 /*-------------------------------- Constants --------------------------------*/
-const player1 = 1
-const player2 = -1
+const playerX = 1
+const playerO = -1
 
 const winningCombos = [
   win1 = [sq0, sq1, sq2],
@@ -24,14 +24,15 @@ const allSquares = Array.from(document.querySelectorAll('.square'))
 const gameMessage = document.getElementById('message')
 const resetBtn = document.querySelector('#reset-button')
 
-console.log(allSquares)
+
 
 /*----------------------------- Event Listeners -----------------------------*/
 //forEach that 
 // allSquares.forEach(square => 
 //   square.addEventListener('click', makeChoice))
 
-document.querySelector('.board').addEventListener('click',makeChoice)
+// document.querySelector('.board').addEventListener('click',makeChoice)
+allSquares.forEach(square => square.addEventListener('click', makeChoice))
 
 
 
@@ -44,6 +45,7 @@ function init (){
   isWinner = null
   gameMessage.textContent = "Player X is first. Make your selection!"
   render()
+  renderWin()
 }
 
 function render (){
@@ -52,9 +54,11 @@ function render (){
     if (square === 1) {
       pushLetter.innerHTML = 'X'
       gameMessage.textContent ='Player O make your selection'
+      allSquares[idx].style.backgroundColor = 'lightblue'
     } else if (square === -1) {
       pushLetter.innerHTML = 'O'
       gameMessage.textContent ='Player X make your selection'
+      allSquares[idx].style.backgroundColor = 'pink'
     } else {
       square = null
     }   
@@ -62,15 +66,27 @@ function render (){
 }
 
 function renderTurn (){
-
+  
 }
+
 
 function makeChoice (event){
   console.log(event.target.id)
 }
 
 function renderWin (){
-  
+  winningCombos.forEach(winner => {
+    let total = 0
+    winner.forEach(idx => {
+      total = total + gameBoard[idx]
+    })
+    if(Math.abs(total) === 3) {
+      isWinner === true
+    } else {
+      false
+    }
+    console.log(isWinner)
+  })
 }
 
 
