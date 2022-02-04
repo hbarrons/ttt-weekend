@@ -19,11 +19,10 @@ const winningCombos = [
   win8 = [sq2, sq4, sq6]
 ]
 
-console.log(winningCombos)
 
 /*---------------------------- Variables (state) ----------------------------*/
 let gameBoard
-let playerTurn
+let playerTurn = 1
 let isWinner
 
 /*------------------------ Cached Element References ------------------------*/
@@ -32,29 +31,32 @@ const gameMessage = document.getElementById('message')
 const resetBtn = document.querySelector('#reset-button')
 
 
-console.log(allSquares)
 
 /*----------------------------- Event Listeners -----------------------------*/
-//listen for clicks on chosen square, add 1 (X) or -1 (O) depending on player turn
-allSquares.forEach(square => 
-  square.addEventListener('click', makeChoice)  
-)
+//forEach that 
+// allSquares.forEach(square => 
+//   square.addEventListener('click', makeChoice))
+
+  document.querySelector('.board').addEventListener('click',makeChoice)
+
 /*-------------------------------- Functions --------------------------------*/
 
 init()
 function init (){
-  gameBoard = [sq0=null, sq1=null, sq2=null, sq3=null, sq4=null, sq5=null, sq6=null, sq7=null, sq8=null]
+  gameBoard = [1, null, -1, null, null, null, null, null, null]
   playerTurn = 1
   isWinner = null
+  gameMessage.textContent = "Player X is first, make your selection"
   render()
 }
 
 function render (){
-  gameBoard.forEach(square => {
+  gameBoard.forEach((square, idx) => {
+    pushLetter = document.getElementById(`sq${idx}`)
     if (square === 1) {
-      square.innerHTML = 'X'
+      pushLetter.innerHTML = 'X'
     } else if (square === -1) {
-      square.innerHTML = 'O'
+      pushLetter.innerHTML = 'O'
     } else {
       square = null
     }   
@@ -63,21 +65,11 @@ function render (){
 }
 
 function makeChoice (event){
-  if (playerTurn === 1){
-  event.target.innerHTML('X')
-  } else {
-    event.target.id.innerHTML('O')
-  }
   console.log(event.target.id)
 }
+
 function renderWin (){
   
 }
 
 
-// let mapBoard =  gameBoard.map(functiona(a){
-//   for (let i = 0; i < gameBoard.length; i++) {
-//     const  = gameBoard[i]; 
-    
-//   }
-// })
