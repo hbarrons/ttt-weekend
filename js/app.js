@@ -62,50 +62,48 @@ function render (){
   })
   renderWinner()
   renderTie()
+  // console.log(isWinner)
+  // console.log(playerTurn)
 }
-
-//3.3.2
-// if (!isWinner) {
-//   // indicate whose turn it is
-
-// } else if (winner === "T") {
-//   // indicate a tie game
-// } else {
-//   // congrats to the winner!
-//   gameMessage.textContent ='Congrats '
-// }
 
 function renderWinner (){
    winningCombos.forEach(winCombo => {
      let total = 0
      winCombo.forEach(idx => {
        total = total + gameBoard[idx]
-     })
-     if (Math.abs(total) === 3) {
-       isWinner = true
+      })
+      if (Math.abs(total) === 3) {
+        isWinner = true
      } 
    })
 }
 
 function renderTie (){
-  if (isWinner !== null) {
-    if (gameBoard.every(square => square !== null)){
+  if (isWinner !== null && gameBoard.every(square => square !== null)){
       isWinner = "T"
+      gameMessage.textContent = 'Cats game - reset to play again!'
     }
-    console.log(isWinner)
   }
-}
+
 
 function renderTurn (){
-  
+  playerTurn *= -1
 }
 
 
 function handleClick (event){
+  let squareClick = parseInt(event.target.id.split('').pop())
+  if(gameBoard[squareClick] === null)
+  return gameBoard[squareClick] = playerTurn;
   console.log(event.target.id)
-   
+  console.log(squareClick)
+  console.log(gameBoard)
+  renderTurn() 
+  render()
 }
 
 
+function clearGame (){
 
+}
 
