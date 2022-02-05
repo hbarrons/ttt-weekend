@@ -31,6 +31,9 @@ const resetBtn = document.querySelector('#reset-button')
 allSquares.forEach(square => 
   square.addEventListener('click', handleClick))
 
+resetBtn.addEventListener('click', clearGame)
+
+
 
 
 
@@ -74,9 +77,9 @@ function renderWinner (){
      } 
    })
    if (isWinner === -1) {
-    gameMessage.textContent = 'Player X wins!'
+    gameMessage.textContent = 'Player X wins! Reset to play again.'
   } else if (isWinner === 1){
-    gameMessage.textContent = 'Player O wins!'
+    gameMessage.textContent = 'Player O wins! Reset to play again.'
   } else if (isWinner === null && gameBoard.every(square => square !== null)){
     isWinner = "T"
     gameMessage.textContent = 'Cats game - reset to play again!'
@@ -107,6 +110,9 @@ function handleClick (event){
 function clearGame (){
   if (isWinner === 1 || isWinner === -1 || isWinner === 'T')
   resetBtn.removeAttribute("hidden")
+  for (let i=0; i<gameBoard.length; i++){
+    allSquares.innerHTML = ''
+  }
 }
 
 //debugging
