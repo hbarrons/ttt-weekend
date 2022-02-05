@@ -100,11 +100,13 @@ function handleClick (event){
   render()
   renderTurn()
   renderWinner() 
+  clearGame()
 }
 
 
 function clearGame (){
- 
+  if (isWinner === 1 || isWinner === -1 || isWinner === 'T')
+  resetBtn.removeAttribute("hidden")
 }
 
 //debugging
