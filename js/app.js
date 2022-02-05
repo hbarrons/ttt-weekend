@@ -38,7 +38,7 @@ allSquares.forEach(square =>
 
 init()
 function init (){
-  gameBoard = [1, 1, 1, null, null, null, null, null, null]
+  gameBoard = [null, null, null, null, null, null, null, null, null]
   playerTurn = 1
   isWinner = null
   gameMessage.textContent = "Player X is first. Make your selection!"
@@ -60,7 +60,8 @@ function render (){
       square = null
     }   
   })
-  renderWin()
+  renderWinner()
+  renderTie()
 }
 
 //3.3.2
@@ -74,15 +75,25 @@ function render (){
 //   gameMessage.textContent ='Congrats '
 // }
 
-function renderWin (){
-   // loop through winnerCombos to see if any absolute value of any array combo is equal to 3
+function renderWinner (){
    winningCombos.forEach(winCombo => {
      let total = 0
      winCombo.forEach(idx => {
        total = total + gameBoard[idx]
      })
-     console.log(total)
+     if (Math.abs(total) === 3) {
+       isWinner = true
+     } 
    })
+}
+
+function renderTie (){
+  if (isWinner !== null) {
+    if (gameBoard.every(square => square !== null)){
+      isWinner = "T"
+    }
+    console.log(isWinner)
+  }
 }
 
 function renderTurn (){
