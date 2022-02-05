@@ -50,21 +50,17 @@ function render (){
     pushLetter = document.getElementById(`sq${idx}`)
     if (square === 1) {
       pushLetter.innerHTML = 'X'
-      gameMessage.textContent = "Player O's turn, make your selection!"
+      // gameMessage.textContent = "Player O's turn, make your selection!"
       allSquares[idx].style.backgroundColor = 'lightblue'
     } else if (square === -1) {
       pushLetter.innerHTML = 'O'
-      gameMessage.textContent = "Player X's turn, make your selection!"
+      // gameMessage.textContent = "Player X's turn, make your selection!"
       allSquares[idx].style.backgroundColor = 'pink'
     } else {
       square = null
     }   
   })
-  renderWinner()
-  renderTie()
   clearGame()
-  // console.log(isWinner)
-  // console.log(playerTurn)
 }
 
 function renderWinner (){
@@ -77,17 +73,23 @@ function renderWinner (){
         isWinner = playerTurn
      } 
    })
-}
-
-function renderTie (){
-  if (isWinner !== null && gameBoard.every(square => square !== null)){
-      isWinner = "T"
-    }
+   if (isWinner === -1) {
+    gameMessage.textContent = 'Player X wins!'
+  } else if (isWinner === 1){
+    gameMessage.textContent = 'Player O wins!'
+  } else if (isWinner === null && gameBoard.every(square => square !== null)){
+    isWinner = "T"
+    gameMessage.textContent = 'Cats game - reset to play again!'
   }
-
+}
 
 function renderTurn (){
   playerTurn *= -1
+  if (playerTurn === 1 && isWinner === null){
+    gameMessage.textContent = "Player X's turn, make your selection!"
+  } else if (playerTurn === -1 && isWinner === null){
+    gameMessage.textContent = "Player O's turn, make your selection!"
+  }
 }
 
 
@@ -95,22 +97,15 @@ function handleClick (event){
   let squareClick = parseInt(event.target.id.split('').pop())
   if(gameBoard[squareClick] === null)
   return gameBoard[squareClick] = playerTurn;
-  console.log(event.target.id)
-  console.log(squareClick)
-  console.log(gameBoard)
-  renderTurn() 
   render()
+  renderTurn()
+  renderWinner() 
 }
 
 
 function clearGame (){
-  if (isWinner === -1) {
-    gameMessage.textContent = 'Player X wins!'
-  } else if (isWinner === 1){
-    gameMessage.textContent = 'Player O wins!'
-  } else if (isWinner === 'T') {
-    gameMessage.textContent = 'Cats game - reset to play again!'
-  }
-  return 
+ 
 }
 
+//debugging
+//prevent click on filled square
