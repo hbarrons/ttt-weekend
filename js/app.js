@@ -62,6 +62,7 @@ function render (){
   })
   renderWinner()
   renderTie()
+  clearGame()
   // console.log(isWinner)
   // console.log(playerTurn)
 }
@@ -73,7 +74,7 @@ function renderWinner (){
        total = total + gameBoard[idx]
       })
       if (Math.abs(total) === 3) {
-        isWinner = true
+        isWinner = playerTurn
      } 
    })
 }
@@ -81,7 +82,6 @@ function renderWinner (){
 function renderTie (){
   if (isWinner !== null && gameBoard.every(square => square !== null)){
       isWinner = "T"
-      gameMessage.textContent = 'Cats game - reset to play again!'
     }
   }
 
@@ -104,6 +104,13 @@ function handleClick (event){
 
 
 function clearGame (){
-
+  if (isWinner === -1) {
+    gameMessage.textContent = 'Player X wins!'
+  } else if (isWinner === 1){
+    gameMessage.textContent = 'Player O wins!'
+  } else if (isWinner === 'T') {
+    gameMessage.textContent = 'Cats game - reset to play again!'
+  }
+  return 
 }
 
