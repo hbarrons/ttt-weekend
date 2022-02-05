@@ -13,7 +13,6 @@ const winningCombos = [
   win8 = [2, 4, 6]
 ]
 
-
 /*---------------------------- Variables (state) ----------------------------*/
 let gameBoard
 let playerTurn
@@ -24,18 +23,11 @@ const allSquares = Array.from(document.querySelectorAll('.square'))
 const gameMessage = document.getElementById('message')
 const resetBtn = document.querySelector('#reset-button')
 
-
-
 /*----------------------------- Event Listeners -----------------------------*/
-//forEach that 
 allSquares.forEach(square => 
   square.addEventListener('click', handleClick))
 
 resetBtn.addEventListener('click', clearGame)
-
-
-
-
 
 /*-------------------------------- Functions --------------------------------*/
 
@@ -53,17 +45,14 @@ function render (){
     pushLetter = document.getElementById(`sq${idx}`)
     if (square === 1) {
       pushLetter.innerHTML = 'X'
-      // gameMessage.textContent = "Player O's turn, make your selection!"
       allSquares[idx].style.backgroundColor = 'lightblue'
     } else if (square === -1) {
       pushLetter.innerHTML = 'O'
-      // gameMessage.textContent = "Player X's turn, make your selection!"
       allSquares[idx].style.backgroundColor = 'pink'
     } else {
       square = null
     }   
   })
-  clearGame()
 }
 
 function renderWinner (){
@@ -95,7 +84,6 @@ function renderTurn (){
   }
 }
 
-
 function handleClick (event){
   let squareClick = parseInt(event.target.id.split('').pop())
   if(gameBoard[squareClick] === null)
@@ -106,12 +94,12 @@ function handleClick (event){
   clearGame()
 }
 
-
 function clearGame (){
-  if (isWinner === 1 || isWinner === -1 || isWinner === 'T')
+  if (isWinner === 1 || isWinner === -1 || isWinner === 'T') {
   resetBtn.removeAttribute("hidden")
   for (let i=0; i<gameBoard.length; i++){
-    allSquares.innerHTML = ''
+    allSquares.innerHTML = ""
+    }
   }
 }
 

@@ -9,6 +9,14 @@ body {
   text-align: center;
 }
 
+h1 {
+  color:white;
+}
+
+h2{
+  color: white;
+}
+
 section.board {
   margin: auto;
   text-align: center;
@@ -19,7 +27,8 @@ section.board {
 }
 
 div {
-  border: 3px solid black;
+  border: 3px solid white;
+  color: white;
   font-size: 8vmin;
   text-align: center;
   vertical-align: middle;
