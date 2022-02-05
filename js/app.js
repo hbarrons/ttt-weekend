@@ -3,14 +3,14 @@ const playerX = 1
 const playerO = -1
 
 const winningCombos = [
-  win1 = [sq0, sq1, sq2],
-  win2 = [sq3, sq4, sq5],
-  win3 = [sq6, sq7, sq8],
-  win4 = [sq0, sq3, sq6],
-  win5 = [sq1, sq4, sq7],
-  win6 = [sq2, sq5, sq8],
-  win7 = [sq0, sq4, sq8],
-  win8 = [sq2, sq4, sq6]
+  win1 = [0, 1, 2],
+  win2 = [3, 4, 5],
+  win3 = [6, 7, 8],
+  win4 = [0, 3, 6],
+  win5 = [1, 4, 7],
+  win6 = [2, 5, 8],
+  win7 = [0, 4, 8],
+  win8 = [2, 4, 6]
 ]
 
 
@@ -28,11 +28,9 @@ const resetBtn = document.querySelector('#reset-button')
 
 /*----------------------------- Event Listeners -----------------------------*/
 //forEach that 
-// allSquares.forEach(square => 
-//   square.addEventListener('click', makeChoice))
+allSquares.forEach(square => 
+  square.addEventListener('click', handleClick))
 
-// document.querySelector('.board').addEventListener('click',makeChoice)
-allSquares.forEach(square => square.addEventListener('click', makeChoice))
 
 
 
@@ -40,12 +38,11 @@ allSquares.forEach(square => square.addEventListener('click', makeChoice))
 
 init()
 function init (){
-  gameBoard = [null, null, null, null, null, null, null, null, null]
+  gameBoard = [1, 1, 1, null, null, null, null, null, null]
   playerTurn = 1
   isWinner = null
   gameMessage.textContent = "Player X is first. Make your selection!"
   render()
-  renderWin()
 }
 
 function render (){
@@ -53,16 +50,39 @@ function render (){
     pushLetter = document.getElementById(`sq${idx}`)
     if (square === 1) {
       pushLetter.innerHTML = 'X'
-      gameMessage.textContent ='Player O make your selection'
+      gameMessage.textContent = "Player O's turn, make your selection!"
       allSquares[idx].style.backgroundColor = 'lightblue'
     } else if (square === -1) {
       pushLetter.innerHTML = 'O'
-      gameMessage.textContent ='Player X make your selection'
+      gameMessage.textContent = "Player X's turn, make your selection!"
       allSquares[idx].style.backgroundColor = 'pink'
     } else {
       square = null
     }   
   })
+  renderWin()
+}
+
+//3.3.2
+// if (!isWinner) {
+//   // indicate whose turn it is
+
+// } else if (winner === "T") {
+//   // indicate a tie game
+// } else {
+//   // congrats to the winner!
+//   gameMessage.textContent ='Congrats '
+// }
+
+function renderWin (){
+   // loop through winnerCombos to see if any absolute value of any array combo is equal to 3
+   winningCombos.forEach(winCombo => {
+     let total = 0
+     winCombo.forEach(idx => {
+       total = total + gameBoard[idx]
+     })
+     console.log(total)
+   })
 }
 
 function renderTurn (){
@@ -70,23 +90,11 @@ function renderTurn (){
 }
 
 
-function makeChoice (event){
+function handleClick (event){
   console.log(event.target.id)
+   
 }
 
-function renderWin (){
-  winningCombos.forEach(winner => {
-    let total = 0
-    winner.forEach(idx => {
-      total = total + gameBoard[idx]
-    })
-    if(Math.abs(total) === 3) {
-      isWinner === true
-    } else {
-      false
-    }
-    console.log(isWinner)
-  })
-}
+
 
 
