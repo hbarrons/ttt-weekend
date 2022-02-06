@@ -13,6 +13,15 @@ const winningCombos = [
   win8 = [2, 4, 6]
 ]
 
+const blankBoard = function(){
+  for (let i=0; i<gameBoard.length; i++){
+    pushLetter = document.getElementById(`sq${i}`)
+    pushLetter.innerHTML = ''
+    allSquares[i].style.backgroundColor = 'darkslateblue'
+    allSquares.innerHTML = ""
+    }
+}
+
 /*---------------------------- Variables (state) ----------------------------*/
 let gameBoard
 let playerTurn
@@ -27,7 +36,8 @@ const resetBtn = document.querySelector('#reset-button')
 allSquares.forEach(square => 
   square.addEventListener('click', handleClick))
 
-resetBtn.addEventListener('click', clearGame)
+resetBtn.addEventListener('click', init)
+resetBtn.addEventListener('click', blankBoard)
 
 /*-------------------------------- Functions --------------------------------*/
 
@@ -98,10 +108,12 @@ function clearGame (){
   if (isWinner === 1 || isWinner === -1 || isWinner === 'T') {
   resetBtn.removeAttribute("hidden")
   for (let i=0; i<gameBoard.length; i++){
-    allSquares.innerHTML = ""
+    gameBoard[i] = null
     }
   }
+  render()
 }
+
 
 //debugging
 //prevent click on filled square
