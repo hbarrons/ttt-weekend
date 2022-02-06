@@ -91,13 +91,13 @@ function renderWinner (){
 }
 
 function renderTurn(){
-  if (Math.abs(gameBoard.reduce(function(prev, current) {
+  if ((gameBoard.reduce(function(prev, current) {
     return prev += current})) === 1) {
       playerTurn *= -1
       gameMessage.textContent = "Player O's turn!"
     }
-  if ((Math.abs(gameBoard.reduce(function(prev, current) {
-    return prev += current}))) === 0 ) {
+  if ((gameBoard.reduce(function(prev, current) {
+    return prev += current})) === 0 ) {
       gameMessage.textContent = "Player X's turn!"
       playerTurn *= -1
     }
