@@ -92,9 +92,9 @@ function renderWinner (){
 function renderTurn (){
   playerTurn *= -1
   if (playerTurn === 1 && isWinner === null){
-    gameMessage.textContent = "Player X's turn, make your selection!"
+    gameMessage.textContent = "Player X's turn!"
   } else if (playerTurn === -1 && isWinner === null){
-    gameMessage.textContent = "Player O's turn, make your selection!"
+    gameMessage.textContent = "Player O's turn!"
   }
 }
 
