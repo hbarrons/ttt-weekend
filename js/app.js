@@ -76,6 +76,7 @@ function renderWinner (){
         isWinner = playerTurn
         winCombo.forEach(idx => {
           allSquares[idx].style.backgroundColor = '#FDFD96'
+          allSquares[idx].style.setProperty('--animate-duration', '2s')
         })
      } 
    })
@@ -89,13 +90,17 @@ function renderWinner (){
   }
 }
 
-function renderTurn (){
-  playerTurn *= -1
-  if (playerTurn === 1 && isWinner === null){
-    gameMessage.textContent = "Player X's turn!"
-  } else if (playerTurn === -1 && isWinner === null){
-    gameMessage.textContent = "Player O's turn!"
-  }
+function renderTurn(){
+  if (Math.abs(gameBoard.reduce(function(prev, current) {
+    return prev += current})) === 1) {
+      playerTurn *= -1
+      gameMessage.textContent = "Player O's turn!"
+    }
+  if ((Math.abs(gameBoard.reduce(function(prev, current) {
+    return prev += current}))) === 0 ) {
+      gameMessage.textContent = "Player X's turn!"
+      playerTurn *= -1
+    }
 }
 
 function handleClick (event){
@@ -117,7 +122,3 @@ function clearGame (){
     }
   }
 }
-
-
-//debugging
-//prevent click on filled square
