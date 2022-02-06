@@ -19,7 +19,7 @@ const blankBoard = function(){
     pushLetter.innerHTML = ''
     allSquares[i].style.backgroundColor = 'darkslateblue'
     allSquares.innerHTML = ""
-    }
+  } 
 }
 
 /*---------------------------- Variables (state) ----------------------------*/
@@ -48,6 +48,7 @@ function init (){
   isWinner = null
   gameMessage.textContent = "Player X is first. Make your selection!"
   render()
+  resetBtn.setAttribute("hidden", true)
 }
 
 function render (){
@@ -62,6 +63,7 @@ function render (){
     } else {
       square = null
     }   
+    
   })
 }
 
