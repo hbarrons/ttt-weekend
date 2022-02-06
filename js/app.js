@@ -47,8 +47,8 @@ function init (){
   playerTurn = 1
   isWinner = null
   gameMessage.textContent = "Player X is first. Make your selection!"
-  render()
   resetBtn.setAttribute("hidden", true)
+  render()
 }
 
 function render (){
@@ -63,7 +63,6 @@ function render (){
     } else {
       square = null
     }   
-    
   })
 }
 
@@ -113,7 +112,6 @@ function clearGame (){
     gameBoard[i] = null
     }
   }
-  render()
 }
 
 
