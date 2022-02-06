@@ -54,10 +54,10 @@ function init (){
 function render (){
   gameBoard.forEach((square, idx) => {
     pushLetter = document.getElementById(`sq${idx}`)
-    if (square === 1) {
+    if (square === 1  && square !== null) {
       pushLetter.innerHTML = 'X'
       allSquares[idx].style.backgroundColor = 'lightblue'
-    } else if (square === -1) {
+    } else if (square === -1 && square !== null) {
       pushLetter.innerHTML = 'O'
       allSquares[idx].style.backgroundColor = 'pink'
     } else {
@@ -74,6 +74,9 @@ function renderWinner (){
       })
       if (Math.abs(total) === 3) {
         isWinner = playerTurn
+        winCombo.forEach(idx => {
+          allSquares[idx].style.backgroundColor = '#FDFD96'
+        })
      } 
    })
    if (isWinner === -1) {
@@ -97,8 +100,9 @@ function renderTurn (){
 
 function handleClick (event){
   let squareClick = parseInt(event.target.id.split('').pop())
-  if(gameBoard[squareClick] === null)
-  return gameBoard[squareClick] = playerTurn;
+  if(gameBoard[squareClick] === null && gameBoard[squareClick] !== 1 && gameBoard[squareClick] !== -1) {
+    return gameBoard[squareClick] = playerTurn;
+  }
   render()
   renderTurn()
   renderWinner() 
