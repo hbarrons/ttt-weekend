@@ -42,7 +42,7 @@ function init (){
   gameBoard = [null, null, null, null, null, null, null, null, null]
   playerTurn = 1
   isWinner = null
-  gameMessage.textContent = "Player X is first. Make your selection!"
+  gameMessage.textContent = "X is up first. Make your selection!"
   resetBtn.setAttribute("hidden", true)
   render()
 }
@@ -77,9 +77,9 @@ function renderWinner (){
      } 
    })
    if (isWinner === -1) {
-    gameMessage.textContent = 'Player X wins! Reset to play again.'
+    gameMessage.textContent = 'X wins! Reset to play again.'
   } else if (isWinner === 1){
-    gameMessage.textContent = 'Player O wins! Reset to play again.'
+    gameMessage.textContent = 'O wins! Reset to play again.'
   } else if (isWinner === null && gameBoard.every(square => square !== null)){
     isWinner = "T"
     gameMessage.textContent = "Cat's game - reset to play again!"
@@ -90,11 +90,11 @@ function renderTurn(){
   if ((gameBoard.reduce(function(prev, current) {
     return prev += current})) === 1) {
       playerTurn *= -1
-      gameMessage.textContent = "Player O's turn!"
+      gameMessage.textContent = "O's turn!"
     }
   if ((gameBoard.reduce(function(prev, current) {
     return prev += current})) === 0 ) {
-      gameMessage.textContent = "Player X's turn!"
+      gameMessage.textContent = "X's turn!"
       playerTurn *= -1
     }
 }
