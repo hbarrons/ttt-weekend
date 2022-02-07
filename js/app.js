@@ -82,7 +82,7 @@ function renderWinner (){
     gameMessage.textContent = 'Player O wins! Reset to play again.'
   } else if (isWinner === null && gameBoard.every(square => square !== null)){
     isWinner = "T"
-    gameMessage.textContent = 'Cats game - reset to play again!'
+    gameMessage.textContent = "Cat's game - reset to play again!"
   }
 }
 
