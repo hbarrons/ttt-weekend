@@ -1,7 +1,6 @@
 /*-------------------------------- Constants --------------------------------*/
 const playerX = 1
 const playerO = -1
-
 const winningCombos = [
   win1 = [0, 1, 2],
   win2 = [3, 4, 5],
@@ -12,7 +11,6 @@ const winningCombos = [
   win7 = [0, 4, 8],
   win8 = [2, 4, 6]
 ]
-
 const blankBoard = function(){
   for (let i=0; i<gameBoard.length; i++){
     pushLetter = document.getElementById(`sq${i}`)
@@ -35,12 +33,10 @@ const resetBtn = document.querySelector('#reset-button')
 /*----------------------------- Event Listeners -----------------------------*/
 allSquares.forEach(square => 
   square.addEventListener('click', handleClick))
-
 resetBtn.addEventListener('click', init)
 resetBtn.addEventListener('click', blankBoard)
 
 /*-------------------------------- Functions --------------------------------*/
-
 init()
 function init (){
   gameBoard = [null, null, null, null, null, null, null, null, null]
