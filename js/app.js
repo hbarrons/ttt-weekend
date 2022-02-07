@@ -1,4 +1,5 @@
 /*-------------------------------- Constants --------------------------------*/
+
 const winningCombos = [
   win1 = [0, 1, 2],
   win2 = [3, 4, 5],
@@ -70,7 +71,6 @@ function renderWinner (){
         isWinner = playerTurn
         winCombo.forEach(idx => {
           allSquares[idx].style.backgroundColor = '#FDFD96'
-          allSquares[idx].style.setProperty('--animate-duration', '2s')
         })
      } 
    })
