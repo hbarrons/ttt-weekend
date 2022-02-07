@@ -1,6 +1,4 @@
 /*-------------------------------- Constants --------------------------------*/
-const playerX = 1
-const playerO = -1
 const winningCombos = [
   win1 = [0, 1, 2],
   win2 = [3, 4, 5],
