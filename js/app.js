@@ -19,7 +19,7 @@ const blankBoard = function(){
   } 
 }
 
-/*---------------------------- Variables (state) ----------------------------*/
+/*-------------------------------- Constants --------------------------------*/
 let gameBoard
 let playerTurn
 let isWinner
@@ -100,7 +100,7 @@ function renderTurn(){
 function handleClick (event){
   let squareClick = parseInt(event.target.id.split('').pop())
   if(gameBoard[squareClick] === null && gameBoard[squareClick] !== 1 && gameBoard[squareClick] !== -1) {
-    return gameBoard[squareClick] = playerTurn;
+    gameBoard[squareClick] = playerTurn;
   }
   render()
   renderTurn()
