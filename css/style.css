@@ -9,6 +9,7 @@ body {
   text-align: center;
 }
 
+
 h1 {
   font-family: 'Supermercado One', cursive;
   color:lightgray;
@@ -69,5 +70,25 @@ div {
 #reset-button:hover,
 #reset-button:focus {
   background-color: #F082AC;
+}
+
+
+@media only screen and (min-width: 400px) {
+  h1{
+    font-size: 60px;
+  }
+  h2{
+    font-size: 30px;
+  }
+  section.board {
+    margin: auto;
+    text-align: center;
+    display: grid;
+    grid-template-rows: repeat(3, 10vmin);
+    grid-template-columns: repeat(3, 10vmin);
+    grid-gap: 0vmin;
+    width: fit-content;
+    padding: 0%;
+  }
 }
 
