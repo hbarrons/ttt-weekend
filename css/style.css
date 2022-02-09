@@ -73,21 +73,25 @@ div {
 }
 
 
-@media only screen and (min-width: 400px) {
+@media only screen and (max-width: 600px) {
+
+  
   h1{
-    font-size: 60px;
+    font-size: 40px;
   }
+
   h2{
-    font-size: 30px;
+    font-size: 20px;
   }
+
   section.board {
     margin: auto;
     text-align: center;
     display: grid;
-    grid-template-rows: repeat(3, 10vmin);
-    grid-template-columns: repeat(3, 10vmin);
+    grid-template-rows: repeat(3, 70px);
+    grid-template-columns: repeat(3, 70px);
     grid-gap: 0vmin;
-    width: fit-content;
+    min-width: none;
     padding: 0%;
   }
 }
