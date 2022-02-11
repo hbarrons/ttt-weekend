@@ -96,30 +96,15 @@ function renderTurn(){
       playerTurn *= -1
     }
 }
-//my function
-// function handleClick (event){
-//   let squareClick = parseInt(event.target.id.split('').pop())
-//   if(gameBoard[squareClick] === null && gameBoard[squareClick] !== 1 && gameBoard[squareClick] !== -1) {
-//     gameBoard[squareClick] = playerTurn;
-//   }
-//   render()
-//   renderTurn()
-//   renderWinner() 
-//   clearGame()
-// }
 
-// Joe's function
 function handleClick(event) {
   let squareClick = parseInt(event.target.id.split('').pop())
-  // if (gameBoard[squareClick] === null && gameBoard[squareClick] !== 1 && gameBoard[squareClick] !== -1) {
-  if (gameBoard[squareClick] === null && isWinner === null) { // <= prevent the 'move' if a winner has been declared
-    // return gameBoard[squareClick] = playerTurn;
+  if (gameBoard[squareClick] === null && isWinner === null) { 
     gameBoard[squareClick] = playerTurn;
     render()
     renderTurn()
     renderWinner()
     clearGame()
-    // ^^moved into if block
   }
 }
 
